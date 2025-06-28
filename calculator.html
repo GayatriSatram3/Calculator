@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="calculator.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .image{
+    width:100%;
+    height:30vh;
+}
+
+.bg{
+    background-color: rgb(213, 234, 240);
+    height:100vh;
+}
+
+.heading{
+    font-family: "Roboto";
+    font-size: 30px;
+    font-weight: bold;
+    text-align:center;
+    margin:10px;
+    padding:10px;
+}
+
+.title{
+    color:rgb(161, 160, 160);
+    font-family: "Roboto";
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+    margin-left:15px;
+}
+
+.boxes{
+    width:30vw;
+    height:5vh;
+    border-radius:2px;
+    border-width:1px;
+    border-color:rgb(161, 160, 160);
+    background-color: white;
+    color:black;
+    font-family: "Roboto";
+    font-size: 20px;
+    font-weight: 200;
+    margin-left:15px;
+}
+
+.display-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+}
+
+.btn{
+    width:15vw;
+    height:6vh;
+    border-radius:5px;
+    border-width:1px;
+    border-color:rgb(45, 50, 113);
+    background-color: rgb(45, 50, 113);
+    color:white;
+    font-family: "Roboto";
+    font-size: 25px;
+    font-weight: 200;
+    margin-left:100px;
+    margin-top:15px;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="bg-container">
+        <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/tip-calculator-img.png" class="image"/>
+        <div class="bg display-center">
+            <h1 class="heading">Tip Calculator</h1>
+            <p class="title">BILL AMOUNT</p>
+            <input type="text" class="boxes" id="billAmount">
+            <p class="title">PERCENTAGE TIP</p>
+            <input type="text" class="boxes" id="percentageTip">
+            <p class="title">TIP AMOUNT</p>
+            <input type="text" class="boxes" id="tipAmount">
+            <p class="title">TOTAL</p>
+            <input type="text" class="boxes" id="totalAmount">
+            <div class="center-btn">
+                <button class="btn" onClick="calculateOperations()">CALCULATE</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateOperations() {
+
+let billAmount = parseFloat(document.getElementById("billAmount").value);
+let percentageTip = parseFloat(document.getElementById("percentageTip").value);
+let tipAmount = document.getElementById("tipAmount");
+let totalAmount = document.getElementById("totalAmount");
+
+if (isNaN(billAmount) || isNaN(percentageTip)){
+    alert("please enter valid inputs")
+    return;
+}
+
+    let tip = (percentageTip/100)*billAmount;
+    tipAmount.value = tip.toFixed(2);
+    let total = billAmount + tip;
+    totalAmount.value = total.toFixed(2);
+}
+    </script>
+</body>
+</html>
